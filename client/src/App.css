@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+
+*{
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: #777;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-header {
+  margin-top: 10px; 
+  font-size: 15px;
+}
+
+.main-nav{
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255, .3)
+}
+
+.nav-bar {
+  flex: auto;
+  display: block;
+  color: black;
+  background-color: #0096D6;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  top: 0;
+  position: sticky;
+}
+
+.links {
+  font-size: 15px;
+  padding: 10;
+  margin: 20px;
+}
+
