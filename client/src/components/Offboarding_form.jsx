@@ -58,6 +58,8 @@ function Offboarding_form () {
 
     return (
         <>
+
+        {/* improve the styling */}
             <div className="modal-container">
                 <div className="main-form">
                     <div className="form-group">
