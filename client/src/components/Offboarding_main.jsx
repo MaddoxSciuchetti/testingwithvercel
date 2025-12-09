@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ToDoItem from "./ToDoItem"
 import ToDoItem_2 from "./ToDoItem_2"
 import { API_URL } from "../api.js";
+import "./on_form.css"
 
 
 
@@ -55,35 +56,47 @@ function Offboarding_main() {
 
     useEffect(() => {
         const dataFetch = async () => {
+            setIsLoading(true);
             const data = await (
                 await fetch(`${API_URL}/offboarding/fetchoffboardingname`)
             ).json()
             console.log(data)
             setState(data)
+            setIsLoading(false);
         };
         dataFetch();
     }, [])
 
+    const [isLoading, setIsLoading] = useState(false);
+
 
     return(
-        <div className="list-container">
-            <div className="list">
-                <div className="sublist-1">
-                    <div className="sublist-2">
-                        <button className="table-1 btn" onClick={handleSubmit}>Add</button>
-                        <input className="table-1 input-box"
-                        id="1"
-                        type="text"
-                        value={newTask}
-                        onChange={((e) => setNewTask(e.target.value))}
-                        placeholder="Name"/>
-                    </div>
+        <><div>
+            {isLoading ? <div className="loading-container">
 
-                    {state && state.map((value, key ) => (<ToDoItem_2 key={key} item={value.name} onRemove={removeTask} editRow={handleEditRow} gotopage={handlepage}/>))}
-                    {tasks && tasks.map((task, key) => (<ToDoItem key={key} item={task} onRemove={removeTask} editRow={handleEditRow} gotopage={handlepage} />))}
+                <p className="loading-state">Lädt...</p>
+                </div> : null
+            }
+        </div>
+            <div className="list-container">
+                <div className="list">
+                    <div className="sublist-1">
+                        <div className="sublist-2">
+                            <button className="table-1 btn" onClick={handleSubmit}>Add</button>
+                            <input className="table-1 input-box"
+                            id="1"
+                            type="text"
+                            value={newTask}
+                            onChange={((e) => setNewTask(e.target.value))}
+                            placeholder="Name"/>
+                        </div>
+
+                        {state && state.map((value, key ) => (<ToDoItem_2 key={key} item={value.name} onRemove={removeTask} editRow={handleEditRow} gotopage={handlepage}/>))}
+                        {tasks && tasks.map((task, key) => (<ToDoItem key={key} item={task} onRemove={removeTask} editRow={handleEditRow} gotopage={handlepage} />))}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
         
     )
 }

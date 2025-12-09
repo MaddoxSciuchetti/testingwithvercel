@@ -6,7 +6,6 @@ import { API_URL } from "../api.js";
 
 
 
-
 function Onboarding_Form_Main() {
 
 
@@ -64,26 +63,35 @@ function Onboarding_Form_Main() {
     useEffect(() => {
 
         const dataFetch = async () => {
+            setIsLoading(true);
             const data = await (
                 await fetch(`${API_URL}/onboarding/fetchData`)
             ).json()
             console.log(data)
             setState(data)
+            setIsLoading(false);
         };
         dataFetch();
     }, [])
 
-
+    const [isLoading, setIsLoading] = useState(false);
 
 
     return (
+        <>
+        <div>
+            {isLoading ? <div className="loading-container">
+        
+                <p className="loading-state"> Lädt...</p>
+        
+            </div> : null}
+
+        </div>
         <div className="list-container">
             <div className="list">
                 <div className="sublist-1">
 
                     <div className="sublist-2">
-
-
                         <button className="table-1 btn" onClick={handleSubmit}>Add</button>
                 
                         <input className="table-1 input-box"
@@ -94,16 +102,14 @@ function Onboarding_Form_Main() {
                         onChange={((e) => setNewTask(e.target.value))}
                         placeholder="Name"/>
                     </div>
+                    {  state && state.map((value, key) => (<ToDoItem_2 key={key} item={value.name} gotopage={handlepage} onRemove={removeTask}/>))}
+                    {  tasks && tasks.map((task, key) => (<ToDoItem key={key} item={task} gotopage={handlepage} onRemove={removeTask} />))}
 
-                    { state && state.map((value, key) => (<ToDoItem_2 key={key} item={value.name} gotopage={handlepage} onRemove={removeTask}/>))}
-
-
-                    { tasks && tasks.map((task, key) => (<ToDoItem key={key} item={task} gotopage={handlepage} onRemove={removeTask} />))}
-               
                 </div>
                 
             </div>        
         </div>
+        </>
     )
 
 }

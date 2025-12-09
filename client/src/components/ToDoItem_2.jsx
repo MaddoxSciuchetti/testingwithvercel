@@ -3,6 +3,8 @@ import { MdDelete } from "react-icons/md";
 import {useState} from "react";
 import Modal from "./Modal.jsx";
 
+
+
 import "./Todo.css";
 
 
@@ -21,7 +23,10 @@ function ToDoItem_2({ item, gotopage, onRemove}) {
     }
 
 
+
     return (
+
+
         <div className="item-wrapper">
             <div className="items">
                 <div className="itum">
@@ -37,7 +42,6 @@ function ToDoItem_2({ item, gotopage, onRemove}) {
 
         {modal && <Modal toggleModal={toggleModal} item={item} completeRemove={onRemove} />}
         </div>
-
         
     )
 }
