@@ -2,10 +2,8 @@ import React from "react";
 import "./Home.css"
 
 
+
 export const Home = () => {
-
-
-    
 
     const curDate = new Date();
     const date = curDate.getHours()
@@ -24,6 +22,7 @@ export const Home = () => {
 
     return(
         <div className="home-container">
+
             <div>
                 <h1>{greeting}</h1>
         

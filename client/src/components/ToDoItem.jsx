@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 import "./Todo.css";
 
 
-function ToDoItem({item, onRemove, editRow, gotopage}) {
+function ToDoItem({item, toggle, gotopage}) {
     return (
         <div className="item-wrapper">
             <div className="items">
@@ -16,7 +16,7 @@ function ToDoItem({item, onRemove, editRow, gotopage}) {
                      <GoArrowUpRight  onClick={() => gotopage(item)}/>
                 </div>
                 <div className="itum btn">
-                    <MdDelete onClick={() => onRemove(item)}/>
+                    <MdDelete onClick={() => toggle()}/>
                 </div>
                 {/*<span className="actions"></span>*/}
             </div>

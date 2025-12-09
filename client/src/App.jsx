@@ -6,6 +6,7 @@ import Offboarding_form from "./components/Offboarding_form"
 import Onboarding_form from './components/Onboarding_Form';
 import { Navbar } from './components/Navbar';
 import { Home } from './components/Home';
+import Modal from './components/Modal';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
     <div className="main-header">
       <Navbar/>
       <Routes>
+        <Route path="/webdev" element={<Modal/>}></Route>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/onboarding" element={<Onboarding_Form_Main/>}></Route>
         <Route path="/offboarding" element={<Offboarding_main/>}/>

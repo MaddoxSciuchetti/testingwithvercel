@@ -1,9 +1,26 @@
 import { GoArrowUpRight } from "react-icons/go";
 import { MdDelete } from "react-icons/md";
+import {useState} from "react";
+import Modal from "./Modal.jsx";
+
 import "./Todo.css";
 
 
-function ToDoItem_2({ item, onRemove, editRow, gotopage}) {
+function ToDoItem_2({ item, gotopage, onRemove}) {
+
+    const [modal, setModal] = useState(false)
+
+    const toggleModal = () => {
+        setModal(!modal)
+    }
+
+    if(modal){
+        document.body.classList.add("active-modal")
+    }else{
+        document.body.classList.remove("active-modal")
+    }
+
+
     return (
         <div className="item-wrapper">
             <div className="items">
@@ -14,10 +31,14 @@ function ToDoItem_2({ item, onRemove, editRow, gotopage}) {
                     <GoArrowUpRight  onClick={() => gotopage(item)}/>
                 </div>
                 <div className="itum btn">
-                    <MdDelete onClick={() => onRemove(item)}/>
+                    <MdDelete onClick={() => toggleModal()}/>
                 </div>
             </div>
+
+        {modal && <Modal toggleModal={toggleModal} item={item} completeRemove={onRemove} />}
         </div>
+
+        
     )
 }
 

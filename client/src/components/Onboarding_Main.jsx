@@ -5,6 +5,8 @@ import {useNavigate} from "react-router-dom"
 import { API_URL } from "../api.js";
 
 
+
+
 function Onboarding_Form_Main() {
 
 
@@ -50,9 +52,7 @@ function Onboarding_Form_Main() {
 
     const [modalOpen, setModalOpen] = useState(false);
 
-    const handleEditRow = () => {
-        setModalOpen(true)
-    }
+
 
     function handlepage(task){
      
@@ -73,11 +73,16 @@ function Onboarding_Form_Main() {
         dataFetch();
     }, [])
 
+
+
+
     return (
         <div className="list-container">
             <div className="list">
                 <div className="sublist-1">
+
                     <div className="sublist-2">
+
 
                         <button className="table-1 btn" onClick={handleSubmit}>Add</button>
                 
@@ -85,18 +90,19 @@ function Onboarding_Form_Main() {
                         id="1"
                         type="text"
                         value={newTask}
-
+                        
                         onChange={((e) => setNewTask(e.target.value))}
                         placeholder="Name"/>
                     </div>
-                    { state && state.map((value, key) => (<ToDoItem_2 key={key} item={value.name} onRemove={removeTask} editRow={handleEditRow} gotopage={handlepage}/>))}
-                    { tasks && tasks.map((task, key) => (<ToDoItem key={key} item={task} onRemove={removeTask} editRow={handleEditRow} gotopage={handlepage} />))}
+
+                    { state && state.map((value, key) => (<ToDoItem_2 key={key} item={value.name} gotopage={handlepage} onRemove={removeTask}/>))}
+
+
+                    { tasks && tasks.map((task, key) => (<ToDoItem key={key} item={task} gotopage={handlepage} onRemove={removeTask} />))}
                
                 </div>
-            </div>
-                    
-
-        
+                
+            </div>        
         </div>
     )
 

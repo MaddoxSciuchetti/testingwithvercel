@@ -186,6 +186,7 @@ app.post("/offboarding/postonboardingdata", async (req, res) => {
 })
 
 
+
 app.get("/offboarding/fetchoffboardingname", (req, res) => {
     try{
         const fetch_query = 'SELECT * FROM offboarding_name'
