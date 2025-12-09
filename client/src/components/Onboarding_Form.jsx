@@ -125,7 +125,6 @@ function Onboarding_form() {
     // new_object[16] = description_17
 
 
-
     console.log(data)
 
     return( 
@@ -267,7 +266,6 @@ function Onboarding_form() {
 
                         </ul>
 
-                
                     </div>
                     <div className="form-group">
                         {data && data.map((values, index) => (
