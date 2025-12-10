@@ -46,248 +46,119 @@ function Onboarding_form() {
         const new_str = str[str.length -1];
         data.username = new_str
 
-        console.log(data);
+        console.log("formdata incoming", data);
 
         await sendFormData(data)
 
     }
     const [data, setData] = useState([])
+    const [formattedData, setFormattedData] = useState([])
     
-
-
-
     const url = window.location.pathname.split("/").pop()
-    console.log(url)
+
+
+    const descriptions = [
+        "Arbeitsvertrag unterschrieben zurück + Dokumente BSB", 
+        "Personalfragebogen inkl. notw. Dokumente erhalten", 
+        "Arbeitsmaterialien bereitgestellt (Bestellung Werkzeug)",
+        "Arbeitsplatz eingerichtet",
+        "Software-Zugänge (Engine, Office365) Mailadresse",
+        "Computer eingerichtet",
+        "Handy + Tablet", 
+        "Schlüssel",
+        "Werkzeug QR-Codes registrieren",
+        "Auto",
+        "Arbeitskleidung",
+        "Visitenkarten",
+        "Willkommensmail an das Team",
+        "Einarbeitungsplan erstellt",
+        "BSB Fibel",
+        "Mail mit Kununu-Link versendet",
+        "Easy Park einrichten",
+    ]
 
     useEffect(() => {
         const dataFetch = async() => {
             const data = await (
                 await fetch(`${API_URL}/onboarding/user/`+url)
             ).json()
-            console.log(data)
-            setData(data)
+
+
+            // 17 values wurde von Glenn erstellt
+            // Sehr wichtig Daten Formatt/Formattierung zwischen frontend und backend
+            const schema = [{
+                description: "",
+                input: {
+                    status: "",
+                    edit: ""
+                }
+            }]
+            
+            const formattedData = data.map((input, i) => {
+                return {
+                    description: descriptions[i],
+                    input: {
+                        id: input.id, 
+                        status: input["status"],
+                        edit: input["edit"]
+                    }
+                }
+            })
+
+            console.log("unformatted data", data)
+            console.log("formattedData:", formattedData)
+
+
+            // const schema = [{
+            //     description: "",
+            //     input: {
+            //         status: "",
+            //         note: ""
+            //     }
+            // }]
+            
+            // const formattedData = data.map((input, i) => {
+            //     return {
+            //         description: i <= 2 ? descriptions[i] : "placeholder",
+            //         input: {
+            //             status: input.status,
+            //             note: input.edit
+            //         }
+            //     }
+            // })
+
+
+            // console.log("formattedData:", formattedData)
+
+
+            // setData(data)
+
+
+            setFormattedData(formattedData)
+            
             
         };
         dataFetch()
     }, [])
 
-    const new_object = data
-
-    // const description_1 = {...data[0], description: "Arbeitsvertrag unterschrieben zurück + Dokumente BSB"} 
-    // new_object[0] = description_1
-
-    // const description_2 = {...data[1], description: "Personalfragebogen inkl. notw. Dokumente erhalten"}
-    // new_object[1] = description_2
-
-    // const description_3 = {...data[2], description: "Arbeitsmaterialien bereitgestellt (Bestellung Werkzeug)"}
-    // new_object[2] = description_3
-
-    // const description_4 = {...data[3], description: "Arbeitsplatz eingerichtet"}
-    // new_object[3] = description_4
-
-    // const description_5 = {...data[4], description: "Software-Zugänge (Engine, Office365) Mailadresse"}
-    // new_object[4] = description_5
-
-    // const description_6 = {...data[5], description: "Computer eingerichtet"}
-    // new_object[5] = description_6
-
-    // const description_7 = {...data[6], description: "Handy + Tablet"}
-    // new_object[6] = description_7
-
-    // const description_8 = {...data[7], description: "Schlüssel"}
-    // new_object[7] = description_8
-
-    // const description_9 = {...data[8], description: "Werkzeug QR-Codes registrieren"}
-    // new_object[8] = description_9
-
-    // const description_10 = {...data[9], description: "Auto"}
-    // new_object[9] = description_10
-
-    // const description_11= {...data[10], description: "Arbeitskleidung"}
-    // new_object[10] = description_11
-
-    // const description_12= {...data[11], description:  "Visitenkarten"}
-    // new_object[11] = description_12
-
-    // const description_13= {...data[12], description: "Willkommensmail an das Team"}
-    // new_object[12] = description_13
-
-    // const description_14= {...data[13], description: "Einarbeitungsplan erstellt"}
-    // new_object[13] = description_14
-
-    // const description_15= {...data[14], description: "BSB Fibel"}
-    // new_object[14] = description_15
-
-    // const description_16= {...data[15], description: "Mail mit Kununu-Link versendet"}
-    // new_object[15] = description_16
-
-    // const description_17= {...data[16], description: "Easy Park einrichten"}
-    // new_object[16] = description_17
-
-
-    console.log(data)
-
     return( 
 
         <>
             <div className="modal-container">
-
                 <div className="main-form">
-
                     <div className="form-group">
-                        <ul className="description">
-                            <li className="first">Arbeitsvertrag unterschrieben zurück + Dokumente BSB</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li >Personalfragebogen inkl. notw. Dokumente erhalten</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li > Arbeitsmaterialien bereitgestellt (Bestellung Werkzeug)</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                            <li>Arbeitsplatz eingerichtet</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-
-                            <li>Software-Zugänge (Engine, Office365) Mailadresse</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                            <li>Computer eingerichtet</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                            <li>Handy + Tablet</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                            <li>Schlüssel</li>
-                            <br/>
-                            <br/>
-
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                            <li>Werkzeug QR-Codes registrieren</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            
-                            <br/>
-                            <br/>
-                            <li>Auto</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-
-
-                            <li>Arbeitskleidung</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                            <li>Visitenkarten</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                            <li>Willkommensmail an das Team</li>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                            <br/>
-                            <br/>
-
-                            <li>Einarbeitungsplan erstellt</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                            <li>BSB Fibel</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                            <li>Mail mit Kununu-Link versendet</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Easy Park einrichten</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-
-                        </ul>
-
-                    </div>
-                    <div className="form-group">
-                        {data && data.map((values, index) => (
-
+                        {formattedData && formattedData.map((values, index) => (
                             <Form
                             key={index}
-                            id_original={values.id}
-                            editcomment={values["edit"]}
-                            select_option = {values["status"]}
+                            id_original={values.input.id}
+                            editcomment={values.input["edit"]}
+                            select_option = {values.input["status"]}
+                            description = {values["description"]}
                             handleSubmit={handleSubmit}
                             />
                         ))}
                     </div>
-
-
-
                 </div>
-
-
-
             </div>
         </>
 

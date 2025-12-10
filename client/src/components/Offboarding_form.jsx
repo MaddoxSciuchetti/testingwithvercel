@@ -40,6 +40,24 @@ function Offboarding_form () {
     }
 
     const [data, setData] = useState([])
+    const [formattedData, setFormattedData] = useState([])
+
+    const descriptions = [
+        "Rückgabe Computer",
+        "Rückgabe PKW",
+        "Rückgabe Handy",
+        "Rückgabe Schlüssel",
+        "Rückgabe Werkzeug (wenn unvollständig, was fehlt?)",
+        "Rückgabe Arbeitskleidung", 
+        "Abwesenheitsassistent Mail eingerichtet",
+        "Weiterleitung Mail eingerichtet",
+        "Löschung privater Mails durch Mitarbeiter",
+        "Zugänge gesperrt",
+        "Offboarding-Gespräch terminiert",
+        "Offboarding-Gespräch durchgeführt", 
+        "Infomail ans Team versendet", 
+        "Arbeitszeugnis erstellt & verschickt",
+    ]
 
 
     const url = window.location.pathname.split("/").pop()
@@ -51,7 +69,32 @@ function Offboarding_form () {
                 await fetch(`${API_URL}/offboarding/offboarding/user/`+ url)
             ).json()
             console.log(data)
-            setData(data)
+
+
+            const schema = [{
+                description: "",
+                input: {
+                    status: "",
+                    edit: ""
+                }
+            }]
+
+            const formattedData = data.map((input, i) => {
+                return {
+                    description: descriptions[i],
+                    input: {
+                        id: input.id,
+                        status: input["status"],
+                        edit: input["edit"]
+                    }
+                }
+            })
+
+            console.log("unformatted data", data)
+            console.log("formatted data", formattedData)
+
+            setFormattedData(formattedData)
+
         };
         dataFetch()
     }, [])
@@ -63,106 +106,13 @@ function Offboarding_form () {
             <div className="modal-container">
                 <div className="main-form">
                     <div className="form-group">
-                        <ul className="description">
-                            <li>Rückgabe Computer</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Rückgabe PKW</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Rückgabe Handy</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Rückgabe Schlüssel</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Rückgabe Werkzeug (wenn unvollständig, was fehlt?)</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Rückgabe Arbeitskleidung</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Abwesenheitsassistent Mail eingerichtet</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>RWeiterleitung Mail eingerichtet</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Löschung privater Mails durch Mitarbeiter</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Zugänge gesperrt</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Offboarding-Gespräch terminiert</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Offboarding-Gespräch durchgeführt</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Infomail ans Team versendet</li>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <li>Arbeitszeugnis erstellt & verschickt</li>
-                        </ul>
-                    </div>
-
-                    <div className="form-group">
-                        {data && data.map((values, index) => (
+                        {formattedData && formattedData.map((values, index) => (
                             <Form 
                             key={index}
-                            id_original={values.id}
-                            editcomment={values["edit"]}
-                            select_option={values["status"]}
+                            id_original={values.input.id}
+                            editcomment={values.input["edit"]}
+                            select_option={values.input["status"]}
+                            description = {values["description"]}
                             handleSubmit={handleSubmit}
                             />
 

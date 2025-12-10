@@ -1,7 +1,7 @@
 import "./on_form.css"
 import "react";
 
-function Form ({editcomment , select_option , id_original , handleSubmit }) {
+function Form ({editcomment , select_option , id_original , description,  handleSubmit }) {
 
     return (
         <>
@@ -11,6 +11,8 @@ function Form ({editcomment , select_option , id_original , handleSubmit }) {
              
 
                 <div className="field">
+
+                    <p>{description}</p>
 
                   
                     <div className="field_sub">
@@ -28,11 +30,10 @@ function Form ({editcomment , select_option , id_original , handleSubmit }) {
 
                 </div>
 
-                    <div className="field_sub">
-                        <div className="field-text">
-                            <textarea placeholder="schreibe deine Notiz"id="edit" name="editcomment" defaultValue={editcomment}></textarea>
-                        </div>
+                    <div className="field-text">
+                        <textarea placeholder="schreibe deine Notiz"id="edit" name="editcomment" defaultValue={editcomment}></textarea>
                     </div>
+                
 
 
                     

@@ -1,5 +1,6 @@
 
 .modal-container {
+
     z-index: 1;
     left: 0;
     top: 0;
@@ -13,9 +14,12 @@
     width: 70%;
     border-radius: 20px; 
     margin: auto;
-    margin-top: 5
+    margin-top: 20px;
 }
 
+.main-form {
+    margin-top: 5px; 
+}
 
 .form-group {
 
@@ -27,60 +31,45 @@
     width: 100%;
 }
 
-.field_sub {
-    text-align: left;
-}
-
 .field{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
+    margin-top: 5em; 
     
-    padding: 1rem 1rem;
-    margin: 1px;
+
     vertical-align: middle;
     text-align: center;
  
 }
 
+.field p {
+    text-align: left;
+}
+
 .field-select {
     display: grid;
     grid-template-columns: 1fr;
+    cursor: pointer;
 }
 
 .field-text text{
     text-align: center; 
 }
 
-.main-form {
-    display: grid; 
-    grid-template-columns:  1fr 1fr;
-}
-
-
-
-.field-sub button{
-    cursor: pointer;
-}
-.field_sub select {
-    font-size: 15px;
-    cursor: pointer;
-    outline: none;
-    border: none;
+.field-text {
+    cursor:pointer; 
 }
 
 .field-text textarea {
+    margin-top: 2em;
     font-size: 15px;
     resize: none; 
     width: 100%;
     outline: none;
-    margin-left: 12px; 
+   
     z-index: 3;
     overflow: visible;
 
-}
-
-.field_sub {
-    padding: 10px; 
 }
 
 .entire_form {
@@ -89,35 +78,20 @@
 }
 
 .submit-form {
-    margin-top: 5px;
-    border-radius: 10px;
+    cursor: pointer;
+    transition-delay: 100ms;
 }
+
+
+
 
 .submit-form:active{
     background-color: green;
     color: white;
-    
+    border-radius: 10px;
 }
 
 
-.descriptions {
-    position: absolute; 
-    z-index: 3;
- 
-}
-
-.description {
-    margin-top: 25px;
-
-}
-
-.form-group {
-    float: left;
-    margin: 0;
-    text-align: left;
-
-    
-}
 
 
 
