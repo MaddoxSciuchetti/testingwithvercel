@@ -199,6 +199,7 @@ function Onboarding_form() {
                             <br/>
                             <br/>
                             <br/>
+                            
                             <br/>
                             <br/>
                             <li>Auto</li>
@@ -252,6 +253,7 @@ function Onboarding_form() {
                             <br/>
 
                             <li>Mail mit Kununu-Link versendet</li>
+                            <br/>
                             <br/>
                             <br/>
                             <br/>

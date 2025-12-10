@@ -90,6 +90,13 @@
 
 .submit-form {
     margin-top: 5px;
+    border-radius: 10px;
+}
+
+.submit-form:active{
+    background-color: green;
+    color: white;
+    
 }
 
 
@@ -111,5 +118,6 @@
 
     
 }
+
 
 
