@@ -13,9 +13,9 @@ import express from "express"
 
 dotenv.config();
 const PORT = process.env.PORT || 3005
-
-
 const app = express()
+
+
 app.disable('etag');
 app.use(express.json())
 app.use(express.urlencoded( {extended: true} ))
@@ -38,7 +38,7 @@ app.get("/onboarding/user/:name", (req, res) => {
     const name = req.params.name
     console.log(name)
 
-    const fetch_query = "SELECT * FROM mitarbeiter_form WHERE TRIM(arbeiter_name) =$1 ORDER BY id" 
+    const fetch_query = "SELECT * FROM mitarbeiter_form WHERE TRIM(arbeiter_name)=$1 ORDER BY id" 
     pool.query(fetch_query, [name], (err, result) => {
         if(err){
             console.log(err)
