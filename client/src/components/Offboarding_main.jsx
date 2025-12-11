@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ToDoItem from "./ToDoItem"
+// import ToDoItem from "./ToDoItem"
 import ToDoItem_2 from "./ToDoItem_2"
 import { API_URL } from "../api.js";
 import "./on_form.css"
@@ -94,7 +94,7 @@ function Offboarding_main() {
                     </div>
 
                     {state && state.map((value, key ) => (<ToDoItem_2 key={key} item={value.name} onRemove={removeTask} editRow={handleEditRow} gotopage={handlepage}/>))}
-                    {tasks && tasks.map((task, key) => (<ToDoItem key={key} item={task} onRemove={removeTask} editRow={handleEditRow} gotopage={handlepage} />))}
+                    {tasks && tasks.map((task, key) => (<ToDoItem_2 key={key} item={task} onRemove={removeTask} editRow={handleEditRow} gotopage={handlepage} />))}
         
                 </div>
             </div>
