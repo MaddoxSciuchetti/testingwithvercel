@@ -42,7 +42,7 @@ function Onboarding_Form_Main() {
     function removeTask(taskToRemove) {
         setTasks(tasks.filter((task) => task !== taskToRemove ));
         remove_task_1(taskToRemove)
-        window.location.reload();
+
     }
 
     function handlepage(task){
