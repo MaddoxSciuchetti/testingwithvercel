@@ -124,12 +124,13 @@ app.get("/onboarding/fetchData", (req, res) => {
 // löscht Mitarbeiter funktioniert
 app.delete("/onboarding/delete/:name", async (req, res) => {
     const name = req.params.name
+    console.log(name)
     delete_firstdatabase()
     delete_seconddatabase()
 
     async function delete_firstdatabase () {
 
-        const delete_query = "Delete from mitarbeiter_name where name=$1"
+        const delete_query = "Delete from mitarbeiter_name where TRIM(name)=$1"
         pool.query(delete_query, [name], (err, result) => {
             if(err){
                 res.send(err)
@@ -142,7 +143,7 @@ app.delete("/onboarding/delete/:name", async (req, res) => {
 
     async function delete_seconddatabase () {
 
-        const delete_mitarbeiter_form = 'DELETE FROM mitarbeiter_form WHERE arbeiter_name = $1'
+        const delete_mitarbeiter_form = 'DELETE FROM mitarbeiter_form WHERE TRIM(arbeiter_name) = $1'
         pool.query(delete_mitarbeiter_form, [name], (err, result) => {
             if(err){
                 res.send(err)
@@ -155,6 +156,8 @@ app.delete("/onboarding/delete/:name", async (req, res) => {
         await delete_firstdatabase()
 
     }
+
+    res.send("sucess")
 })
 
 // offboarding only name and creating 
@@ -210,7 +213,7 @@ app.delete("/offboarding/onboardingname/delete/:name", (req, res) => {
     delete_seconddatabase_of()
 
     async function delete_firstdatabase_of() {
-        const delete_query = 'DELETE FROM offboarding_name WHERE name=$1'
+        const delete_query = 'DELETE FROM offboarding_name WHERE TRIM(name)=$1'
         pool.query(delete_query, [name], (err, result) => {
             if(err) {
                 res.send(err)
@@ -221,7 +224,7 @@ app.delete("/offboarding/onboardingname/delete/:name", (req, res) => {
     }
 
     async function delete_seconddatabase_of() {
-        const delete_offboarding_form = 'DELETE FROM offboarding_form WHERE arbeiter_name = $1'
+        const delete_offboarding_form = 'DELETE FROM offboarding_form WHERE TRIM(arbeiter_name) = $1'
         pool.query(delete_offboarding_form, [name], (err, result) => {
             if(err){
                 res.send(err)

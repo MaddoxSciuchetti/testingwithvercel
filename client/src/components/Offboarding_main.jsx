@@ -24,6 +24,7 @@ function Offboarding_main() {
             })
             .then((response) => response.json())
             .then((response) => console.log(response))
+
         }
     }
 
