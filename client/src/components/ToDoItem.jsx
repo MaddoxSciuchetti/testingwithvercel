@@ -13,10 +13,10 @@ function ToDoItem({item, toggle, gotopage}) {
                     <span>{item}</span>
                 </div>
                 <div className="icons">
-                    <div className="itum arrow btn">
+                    <div className="itum arrow_btn">
                         <GoArrowUpRight  onClick={() => gotopage(item)}/>
                     </div>
-                    <div className="itum btn">
+                    <div className="itum delete_btn">
                         <MdDelete onClick={() => toggle()}/>
                     </div>
                 </div>

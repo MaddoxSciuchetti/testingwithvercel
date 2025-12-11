@@ -28,13 +28,19 @@
 
 .icons {
     display: flex; 
-    margin-right: 145px;
+    margin-right: 120px;
+
 }
+
+.arrow_btn{
+    padding-right: 40px;
+}
+
 
 
 .text-todo {
 
-    margin-left: 140px;
+    margin-left: 110px;
 
 }
 
@@ -56,3 +62,12 @@
     height: 1000px;
 
 }
+
+.table-1 {
+    padding: 5px;
+}
+
+.table-1 .input {
+    outline: none; 
+    border: none;
+} 

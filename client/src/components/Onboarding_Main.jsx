@@ -102,7 +102,7 @@ function Onboarding_Form_Main() {
                     placeholder="Name"/>
 
 
-                    <button className="table-1 btn" onClick={handleSubmit}>Add</button>
+                    <button className="table-1 btn" onClick={handleSubmit}>Hinzufügen</button>
                 </div>
                 {  state && state.map((value, key) => (<ToDoItem_2 key={key} item={value.name} gotopage={handlepage} onRemove={removeTask}/>))}
                 {  tasks && tasks.map((task, key) => (<ToDoItem key={key} item={task} gotopage={handlepage} onRemove={removeTask} />))} 
