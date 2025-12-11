@@ -11,7 +11,7 @@ export const Navbar = () => {
             <ul>
                
                 <li><NavLink to="/onboarding"><strong>Onboarding</strong></NavLink></li>
-                <li><NavLink to="/"><img class="image-navbar"src={bsb} alt="not shown "></img></NavLink></li>
+                <li><NavLink to="/"><img className="image-navbar"src={bsb} alt="not shown "></img></NavLink></li>
                 <li><NavLink to="/offboarding"><strong>Offboarding</strong></NavLink></li>
             </ul>
         </nav>

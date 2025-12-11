@@ -210,7 +210,7 @@ app.delete("/offboarding/onboardingname/delete/:name", (req, res) => {
     delete_seconddatabase_of()
 
     async function delete_firstdatabase_of() {
-        const delete_query = ' DELETE FROM offboarding_name WHERE name=$1'
+        const delete_query = 'DELETE FROM offboarding_name WHERE name=$1'
         pool.query(delete_query, [name], (err, result) => {
             if(err) {
                 res.send(err)
