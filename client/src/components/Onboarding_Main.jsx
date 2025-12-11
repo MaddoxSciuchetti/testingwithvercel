@@ -33,6 +33,7 @@ function Onboarding_Form_Main() {
 
         await fetch(`${API_URL}/onboarding/delete/`+ taskToRemove, {
         method:"DELETE",
+        cache: 'no-store',
         headers: {
             "Content-Type":"application/json"
         },

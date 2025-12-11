@@ -6,6 +6,7 @@ import  cors from "cors"
 import express from "express"
 
 
+
 //for next project
 // improving routing
 // integrating middleware
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 3005
 
 
 const app = express()
+app.disable('etag');
 app.use(express.json())
 app.use(express.urlencoded( {extended: true} ))
 
@@ -161,10 +163,6 @@ app.delete("/onboarding/delete/:name", async (req, res) => {
     res.set('Pragma', 'no-cache');
     res.set('Expires', '0');
     res.set('ETag', ''); // Disable ETag if enabled
-
-
-
-
     res.status(200)
 })
 
