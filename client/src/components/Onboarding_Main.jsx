@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ToDoItem from "./ToDoItem.jsx"
+// import ToDoItem from "./ToDoItem.jsx"
 import ToDoItem_2 from "./ToDoItem_2.jsx"
 import {useNavigate} from "react-router-dom"
 import { API_URL } from "../api.js";
@@ -105,7 +105,7 @@ function Onboarding_Form_Main() {
                     <button className="table-1 btn" onClick={handleSubmit}>Hinzufügen</button>
                 </div>
                 {  state && state.map((value, key) => (<ToDoItem_2 key={key} item={value.name} gotopage={handlepage} onRemove={removeTask}/>))}
-                {  tasks && tasks.map((task, key) => (<ToDoItem key={key} item={task} gotopage={handlepage} onRemove={removeTask} />))} 
+                {  tasks && tasks.map((task, key) => (<ToDoItem_2 key={key} item={task} gotopage={handlepage} onRemove={removeTask} />))} 
             </div>   
         </div>     
 

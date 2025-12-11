@@ -36,7 +36,7 @@ app.get("/onboarding/user/:name", (req, res) => {
     const name = req.params.name
     console.log(name)
 
-    const fetch_query = "SELECT * FROM mitarbeiter_form WHERE arbeiter_name =$1 ORDER BY id" 
+    const fetch_query = "SELECT * FROM mitarbeiter_form WHERE TRIM(arbeiter_name) =$1 ORDER BY id" 
     pool.query(fetch_query, [name], (err, result) => {
         if(err){
             console.log(err)
