@@ -136,6 +136,7 @@ app.delete("/onboarding/delete/:name", async (req, res) => {
         pool.query(delete_query, [name], (err, result) => {
             if(err){
                 res.send(err)
+                console.log(err)
             }else{
                 console.log(result)
             }

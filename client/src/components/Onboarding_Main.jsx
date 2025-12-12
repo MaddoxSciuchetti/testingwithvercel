@@ -31,7 +31,7 @@ function Onboarding_Form_Main() {
     }
      async function remove_task_1(taskToRemove) {
 
-        await fetch(`${API_URL}/onboarding/delete/`+ taskToRemove, {
+        await fetch(`${API_URL}/onboarding/delete/${taskToRemove}`, {
         method:"DELETE",
         cache: 'no-store',
         headers: {
